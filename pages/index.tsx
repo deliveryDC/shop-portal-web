@@ -1,7 +1,8 @@
 'use client';
 
-import Image from 'next/image';
 import { useState } from 'react';
+import Window from './componets/window/window';
+
 
 export default function Home({ tenant }: any) {
   const [open, setOpen] = useState(false);
@@ -45,11 +46,20 @@ export default function Home({ tenant }: any) {
           >
             Ver Productos
           </button>
-        </section>        
+        </section>
+          <Window
+            images={[
+              '/tienda1/image1.jpg',
+              '/tienda1/logo.png'              
+            ]}
+            title="Producto Destacado"
+            price={299}
+          />
+            
       </main>
 
       <footer>
-        &copy; 2024 Tienda de Ropa Moderna. Todos los derechos reservados.
+        &copy; 2025 Tienda de Ropa Moderna. Todos los derechos reservados.
       </footer>
     </div>
   );

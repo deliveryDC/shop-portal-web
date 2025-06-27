@@ -1,10 +1,63 @@
 'use client';
 
 import { useState } from 'react';
-import Window from './componets/window/window';
+import WindowGridManager from './componets/windowGridManager/windowGridManager';
+import { Tenant } from './interfaz/Tenant';
 
+const productos = [
+  {
+    images: [
+      '/tienda1/pijama1.0.jpeg',
+      '/tienda1/pijama1.1.jpeg',
+      '/tienda1/pijama1.2.jpeg',
+      '/tienda1/pijama1.3.jpeg'
+    ],
+    title: 'Producto Destacado',
+    price: 42000
+  },
+  {
+    images: [
+      '/tienda1/pijama2.0.jpeg',
+      '/tienda1/pijama2.1.jpeg',
+      '/tienda1/pijama2.2.jpeg',
+      '/tienda1/pijama2.3.jpeg'      
+    ],
+    title: 'Producto Destacado 2',
+    price: 52000
+  },
+  {
+    images: [
+      '/tienda1/pijama3.0.jpeg',
+      '/tienda1/pijama3.1.jpeg',
+      '/tienda1/pijama3.2.jpeg',
+      '/tienda1/pijama3.3.jpeg'
+    ],
+    title: 'Producto Destacado 2',
+    price: 52000
+  },
+  {
+    images: [
+      '/tienda1/pijama4.0.jpeg',
+      '/tienda1/pijama4.1.jpeg',
+      '/tienda1/pijama4.2.jpeg',
+      '/tienda1/pijama4.3.jpeg'
+    ],
+    title: 'Producto Destacado 2',
+    price: 52000
+  },
+   {
+    images: [
+      '/tienda1/pijama5.0.jpeg',
+      '/tienda1/pijama5.1.jpeg',
+      '/tienda1/pijama5.2.jpeg',
+      '/tienda1/pijama5.3.jpeg'
+    ],
+    title: 'Producto Destacado 2',
+    price: 52000
+  }
+];
 
-export default function Home({ tenant }: any) {
+export default function Home({ tenant }: Tenant) {
   const [open, setOpen] = useState(false);
   console.log('tenant:', tenant);
   return (
@@ -47,15 +100,7 @@ export default function Home({ tenant }: any) {
             Ver Productos
           </button>
         </section>
-          <Window
-            images={[
-              '/tienda1/image1.jpg',
-              '/tienda1/logo.png'              
-            ]}
-            title="Producto Destacado"
-            price={299}
-          />
-            
+        <WindowGridManager data={productos} />
       </main>
 
       <footer>

@@ -1,8 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Window from '../window/window';
 import { Props } from '../../interfaz/Props';
-import './windowGridManager.css';
-
+import styles from './windowGridManager.module.css';
 function getGridConfig(width: number) {
   if (width < 768) return { cols: 1, rows: 6 };      // Móvil
   if (width < 1024) return { cols: 2, rows: 3 };     // Tablet
@@ -56,10 +55,11 @@ const WindowGridManager: React.FC<Props> = ({ data }) => {
   }, [page, perPage, data]);
 
   return (
-    <div className="window-grid-manager">
+   
+    <div className={styles['window-grid-manager']}>
       <div
         ref={gridRef}
-        className="window-grid"
+        className={styles['window-grid']}        
         style={{
           gridTemplateColumns: `repeat(${grid.cols}, 1fr)`,
         }}
@@ -68,7 +68,8 @@ const WindowGridManager: React.FC<Props> = ({ data }) => {
           <Window key={page * perPage + idx} {...item} />
         ))}
       </div>
-      <div className="window-grid-manager-pagination">
+      
+      <div className={styles['window-grid-manager-pagination']}>
         <button
           onClick={() => setPage(p => Math.max(p - 1, 0))}
           disabled={page === 0}

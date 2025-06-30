@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { WindowProps } from '../../interfaz/WindowProps';
 import Image from 'next/image';
-import './window.css';
+import styles from './window.module.css';
 
 const Window: React.FC<WindowProps> = ({ images, title, price }) => {
   const [index, setIndex] = useState(0);
@@ -23,10 +23,10 @@ const Window: React.FC<WindowProps> = ({ images, title, price }) => {
 
   return (
     <>
-      <div className="window-component">
-        <div className="window-images">
+      <div className={styles['window-component']}>
+        <div className={styles['window-images']}>
           {index > 0 && (
-            <button className="arrow left" onClick={prev}>
+            <button className={`${styles.arrow} ${styles.left}`} onClick={prev}>
               &#10094;
             </button>
           )}
@@ -42,7 +42,7 @@ const Window: React.FC<WindowProps> = ({ images, title, price }) => {
               alt={`${title} imagen ${index + 1}`}
               width={300}
               height={320}
-              className="window-img"
+              className={styles['window-img']}
               style={{
                 objectFit: 'contain',
                 borderRadius: 12,
@@ -53,26 +53,27 @@ const Window: React.FC<WindowProps> = ({ images, title, price }) => {
             />
           </div>
           {index < images.length - 1 && (
-            <button className="arrow right" onClick={next}>
+            <button className={`${styles.arrow} ${styles.right}`} onClick={next}>
               &#10095;
             </button>
           )}
         </div>
         <h3>{title}</h3>
-        <div className="window-price">
+        <div className={styles['window-price']}>
           {price} <span>COP</span>
         </div>
       </div>
 
       {modalOpen && (
         <div
-          className="window-modal"
+          className={styles['window-modal']}
           onClick={() => setModalOpen(false)}
           tabIndex={-1}
         >
-          <div className="window-modal-content" onClick={(e) => e.stopPropagation()}>
+          <div className={styles['window-modal-content']} onClick={(e) => e.stopPropagation()}>
             {modalIndex > 0 && (
-              <button className="arrow left" onClick={modalPrev}>
+              <button className={`${styles.arrow} ${styles.left}`} onClick={modalPrev}>
+                
                 &#10094;
               </button>
             )}
@@ -81,17 +82,17 @@ const Window: React.FC<WindowProps> = ({ images, title, price }) => {
               alt={`${title} imagen grande ${modalIndex + 1}`}
               width={800}
               height={600}
-              className="window-modal-img"
+              className={styles['window-modal-img']}              
               style={{ objectFit: 'contain', borderRadius: 16, background: '#fff' }}
               priority
             />
             {modalIndex < images.length - 1 && (
-              <button className="arrow right" onClick={modalNext}>
+              <button className={`${styles.arrow} ${styles.right}`} onClick={modalNext}>
                 &#10095;
               </button>
             )}
             <button
-              className="window-modal-close"
+              className={styles['window-modal-close']}              
               onClick={() => setModalOpen(false)}
               aria-label="Cerrar imagen"
             >

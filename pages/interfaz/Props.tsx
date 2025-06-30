@@ -1,5 +1,5 @@
-import { WindowData } from './WindowData';
+import { WindowProps } from './WindowProps';
 
 export interface Props {
-  data: WindowData[];
+  data: WindowProps[];
 }

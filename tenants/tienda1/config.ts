@@ -1,4 +1,6 @@
-const config = {
+import { Tenant } from '../../pages/interfaz/Tenant';
+
+const config : Tenant = {
     title:'Pijamas reinita',
     describeTitle: 'Duerme con estilo, despierta con actitud.',
     describe: 'Descubre nuestras pijamas para mujer: diseños exclusivos, telas suaves y precios accesibles para que te sientas increíble, de noche y de día.',
@@ -14,7 +16,8 @@ const config = {
             '/tienda1/pijama1.3.jpeg'
         ],
         title: 'Conjunto Estampado corazones',
-        price: 42000
+        price: 42000,
+        sizes: ['S', 'M', 'L', 'XL']
     },
     {
         images: [

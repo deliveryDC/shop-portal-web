@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Window from '../window/window';
 import { Props } from '../../interfaz/Props';
 import './windowGridManager.css';
@@ -12,6 +12,7 @@ function getGridConfig(width: number) {
 const WindowGridManager: React.FC<Props> = ({ data }) => {
   const [page, setPage] = useState(0);
   const [grid, setGrid] = useState(getGridConfig(typeof window !== 'undefined' ? window.innerWidth : 1200));
+  const gridRef = useRef<HTMLDivElement>(null);
 
   // Actualiza el grid al cambiar el tamaño de la ventana
   useEffect(() => {
@@ -29,7 +30,7 @@ const WindowGridManager: React.FC<Props> = ({ data }) => {
       const start = pageIdx * perPage;
       const end = Math.min(start + perPage, data.length);
       data.slice(start, end).forEach(item =>
-        item.images.forEach(src => {
+        item.images.forEach((src: string) => {
           const img = new window.Image();
           img.src = src;
         })
@@ -41,6 +42,13 @@ const WindowGridManager: React.FC<Props> = ({ data }) => {
     // eslint-disable-next-line
   }, [page, perPage, data, totalPages]);
 
+  // Scroll al cambiar de página
+  useEffect(() => {
+    if (gridRef.current) {
+      gridRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [page]);
+
   // Datos de la página actual
   const pageData = useMemo(() => {
     const start = page * perPage;
@@ -50,6 +58,7 @@ const WindowGridManager: React.FC<Props> = ({ data }) => {
   return (
     <div className="window-grid-manager">
       <div
+        ref={gridRef}
         className="window-grid"
         style={{
           gridTemplateColumns: `repeat(${grid.cols}, 1fr)`,

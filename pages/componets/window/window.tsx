@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { WindowProps } from '../../interfaz/WindowProps';
+import Image from 'next/image';
 import './window.css';
 
 const Window: React.FC<WindowProps> = ({ images, title, price }) => {
@@ -29,15 +30,28 @@ const Window: React.FC<WindowProps> = ({ images, title, price }) => {
               &#10094;
             </button>
           )}
-          <img
-            src={images[index]}
-            alt={`${title} imagen ${index + 1}`}
+          <div
+            style={{ cursor: 'pointer', width: '100%', height: '100%' }}
             onClick={() => {
               setModalOpen(true);
               setModalIndex(index);
             }}
-            style={{ cursor: 'pointer' }}
-          />
+          >
+            <Image
+              src={images[index]}
+              alt={`${title} imagen ${index + 1}`}
+              width={300}
+              height={320}
+              className="window-img"
+              style={{
+                objectFit: 'contain',
+                borderRadius: 12,
+                width: '100%',
+                height: '100%',
+              }}
+              priority={index === 0}
+            />
+          </div>
           {index < images.length - 1 && (
             <button className="arrow right" onClick={next}>
               &#10095;
@@ -56,23 +70,33 @@ const Window: React.FC<WindowProps> = ({ images, title, price }) => {
           onClick={() => setModalOpen(false)}
           tabIndex={-1}
         >
-          <div className="window-modal-content" onClick={e => e.stopPropagation()}>
+          <div className="window-modal-content" onClick={(e) => e.stopPropagation()}>
             {modalIndex > 0 && (
               <button className="arrow left" onClick={modalPrev}>
                 &#10094;
               </button>
             )}
-            <img
+            <Image
               src={images[modalIndex]}
               alt={`${title} imagen grande ${modalIndex + 1}`}
+              width={800}
+              height={600}
               className="window-modal-img"
+              style={{ objectFit: 'contain', borderRadius: 16, background: '#fff' }}
+              priority
             />
             {modalIndex < images.length - 1 && (
               <button className="arrow right" onClick={modalNext}>
                 &#10095;
               </button>
             )}
-            <button className="window-modal-close" onClick={() => setModalOpen(false)} aria-label="Cerrar imagen">&times;</button>
+            <button
+              className="window-modal-close"
+              onClick={() => setModalOpen(false)}
+              aria-label="Cerrar imagen"
+            >
+              &times;
+            </button>
           </div>
         </div>
       )}

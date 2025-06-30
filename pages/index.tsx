@@ -100,7 +100,7 @@ export default function Home({ tenant }: Tenant) {
             Ver Productos
           </button>
         </section>
-        <WindowGridManager data={productos} />
+        <WindowGridManager data={tenant.products} />
       </main>
 
       <footer>

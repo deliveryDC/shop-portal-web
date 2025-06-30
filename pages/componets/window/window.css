@@ -12,11 +12,13 @@
 .window-images {
   position: relative;
   width: 100%;
-  height: 220px; /* Puedes ajustar esto según tus imágenes */
+  height: 320px; /* Puedes ajustar esto según tus imágenes */
   margin-bottom: 16px;
 }
 
 .window-images img {
+  max-width: 300px;
+  min-width: 220px;
   width: 100%;
   height: 100%;
   object-fit: contain;

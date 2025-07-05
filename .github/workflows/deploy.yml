@@ -29,11 +29,15 @@ jobs:
         run: npm run build
       - name: List .next folder recursively
         run: find .next
+      - name: Show current directory
+        run: pwd
+      - name: List root files
+        run: ls -la
       - name: Persist Build
         uses: actions/upload-artifact@v4
         with:
           name: Build
-          path: .next
+          path: .next/**
           retention-days: 1
           if-no-files-found: error
 
@@ -51,3 +55,7 @@ jobs:
         with:
           name: Build
           path: .next
+      - name: Show current directory
+        run: pwd
+      - name: List root files
+        run: ls -la

@@ -4,8 +4,8 @@ import defaultConfig from '../tenants/default';
 
 export function getTenantConfig(subdomain: string) {
   switch (subdomain) {
-    case 'tienda1': return tienda1;
-    case 'tienda2': return tienda2;
+    case 'PijamasReinita': return tienda1;
+    case 'EleneStore': return tienda2;
     default: return defaultConfig;
   }
 }

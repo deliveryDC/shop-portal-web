@@ -27,8 +27,6 @@ jobs:
         run: npm ci
       - name: Run Build
         run: npm run build
-      - name: List .next folder recursively
-        run: find .next
       - name: Zip build
         run: zip -r build.zip .next
       - name: Persist Build
@@ -38,8 +36,6 @@ jobs:
           path: build.zip
           retention-days: 1
           if-no-files-found: error
-      
-
 
   deploy-frontend-aws:
     runs-on: ubuntu-latest
@@ -57,7 +53,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: Build
-          path: .next/
+          path: build-artifact
+      - name: Unzip build
+        run: unzip build-artifact/build.zip
       - name: Restore Cache
         uses: actions/cache@v3
         id: restore-cache

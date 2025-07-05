@@ -27,11 +27,13 @@ jobs:
         run: npm ci
       - name: Run Build
         run: npm run build
+      - name: List .next folder
+        run: ls -la .next
       - name: Persist Build
         uses: actions/upload-artifact@v4
         with:
           name: Build
-          path: ./.next
+          path: .next
           retention-days: 1
           if-no-files-found: error
 
@@ -51,7 +53,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: Build
-          path: ./.next
+          path: .next
       - name: Restore Cache
         uses: actions/cache@v3
         id: restore-cache
@@ -73,7 +75,7 @@ jobs:
           BUCKET_NAME: portal-web-delivery
           APP_NAME: portal
           AWS_REGION: us-east-1
-          BUILD_FOLDER: ./.next
+          BUILD_FOLDER: .next
         run: |
           VERSION=$(jq -r '.version' package.json)
           RELEASE_NAME="date_$(TZ=America/Bogota date '+%Y-%m-%d-%H:%M-%Z')-version_$VERSION"

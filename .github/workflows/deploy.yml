@@ -27,13 +27,13 @@ jobs:
         run: npm ci
       - name: Run Build
         run: npm run build
-      - name: List .next folder
-        run: ls -la .next
+      - name: List .next folder recursively
+        run: find .next
       - name: Persist Build
         uses: actions/upload-artifact@v4
         with:
           name: Build
-          path: .next
+          path: .next/**
           retention-days: 1
           if-no-files-found: error
 

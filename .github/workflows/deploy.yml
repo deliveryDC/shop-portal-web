@@ -10,10 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20.x
+
       - name: Restore cache
         id: restore-cache
         uses: actions/cache@v3
@@ -22,13 +24,17 @@ jobs:
           key: npm-node-modules-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             npm-node-modules-
+
       - name: Install Dependencies
         if: steps.restore-cache.outputs.cache-hit != 'true'
         run: npm ci
+
       - name: Run Build
         run: npm run build
+
       - name: Zip build
-        run: zip -r build.zip .next
+        run: zip -r build.zip out
+
       - name: Persist Build
         uses: actions/upload-artifact@v4
         with:
@@ -43,19 +49,24 @@ jobs:
     permissions:
       id-token: write
       contents: read
+
     steps:
       - uses: actions/checkout@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20.x
+
       - name: Restore Build
         uses: actions/download-artifact@v4
         with:
           name: Build
           path: build-artifact
+
       - name: Unzip build
-        run: unzip build-artifact/build.zip
+        run: unzip build-artifact/build.zip -d out
+
       - name: Restore Cache
         uses: actions/cache@v3
         id: restore-cache
@@ -64,25 +75,29 @@ jobs:
           key: npm-node-modules-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             npm-node-modules-
+
       - name: Install Dependencies
         if: steps.restore-cache.outputs.cache-hit != 'true'
         run: npm ci --only=prod
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_DEPLOY_FRONTEND }}
           aws-region: us-east-1
+
       - name: Deploy S3 Bucket
         env:
           BUCKET_NAME: portal-web-delivery
           APP_NAME: portal
           AWS_REGION: us-east-1
-          BUILD_FOLDER: .next
+          BUILD_FOLDER: out
         run: |
           VERSION=$(jq -r '.version' package.json)
           RELEASE_NAME="date_$(TZ=America/Bogota date '+%Y-%m-%d-%H:%M-%Z')-version_$VERSION"
-          aws s3 sync $BUILD_FOLDER s3://$BUCKET_NAME/$APP_NAME/release/$RELEASE_NAME --delete --region us-east-1 || exit 1
-          aws s3 sync s3://$BUCKET_NAME/$APP_NAME/release/$RELEASE_NAME s3://$BUCKET_NAME/$APP_NAME/app --delete --region us-east-1 || exit 1
+          aws s3 sync $BUILD_FOLDER s3://$BUCKET_NAME/$APP_NAME/release/$RELEASE_NAME --delete --region $AWS_REGION || exit 1
+          aws s3 sync s3://$BUCKET_NAME/$APP_NAME/release/$RELEASE_NAME s3://$BUCKET_NAME/$APP_NAME/app --delete --region $AWS_REGION || exit 1
+
       - name: Cache Invalidation
         env:
           DISTRIBUTION_ID: E1T4VQUEQ16OTU

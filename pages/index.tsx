@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import WindowGridManager from './componets/windowGridManager/windowGridManager';
+import WindowGridManager from '../components/componets/windowGridManager/windowGridManager';
 import { Tenant } from '../interfaz/Tenant';
 
 export default function Home({ tenant }: { tenant: Tenant }) {

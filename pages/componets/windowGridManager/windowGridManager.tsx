@@ -38,7 +38,6 @@ const WindowGridManager: React.FC<Props> = ({ data }) => {
     preload(page);
     if (page > 0) preload(page - 1);
     if (page < totalPages - 1) preload(page + 1);
-    // eslint-disable-next-line
   }, [page, perPage, data, totalPages]);
 
   // Scroll al cambiar de página

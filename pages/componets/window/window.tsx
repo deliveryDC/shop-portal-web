@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { WindowProps } from '../../interfaz/WindowProps';
+import { WindowProps } from '../../../interfaz/WindowProps';
 import Image from 'next/image';
 import styles from './window.module.css';
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Window from '../window/window';
-import { Props } from '../../interfaz/Props';
+import { Props } from '../../../interfaz/Props';
 import styles from './windowGridManager.module.css';
 function getGridConfig(width: number) {
   if (width < 768) return { cols: 1, rows: 6 };      // Móvil

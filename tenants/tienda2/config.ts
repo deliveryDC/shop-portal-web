@@ -1,4 +1,4 @@
-import { Tenant } from '../../pages/interfaz/Tenant';
+import { Tenant } from '../../interfaz/Tenant';
 
 const tienda2: Tenant = {
   title: 'EleneStore',

@@ -1,4 +1,4 @@
-import { Tenant } from '../pages/interfaz/Tenant';
+import { Tenant } from '../interfaz/Tenant';
 
 const defaultConfig: Tenant = {
     title:'Pijamas reinita',

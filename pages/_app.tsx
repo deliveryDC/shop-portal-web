@@ -2,7 +2,7 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
 import { getTenantConfig } from '../lib/tenant';
-import { Tenant } from './interfaz/Tenant'; // importa tu interfaz
+import { Tenant } from '../interfaz/Tenant'; // importa tu interfaz
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [tenant, setTenant] = useState<Tenant | null>(null); // usa la interfaz aquí

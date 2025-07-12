@@ -86,6 +86,34 @@
   animation: fadeIn 0.2s;
 }
 
+.sizes-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 12px;
+  margin-bottom: 8px;
+}
+
+.size-btn {
+  background: #f8e1e7;
+  color: #a02c5a;
+  border: 1px solid #e5b8c9;
+  border-radius: 20px;
+  padding: 6px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  outline: none;
+}
+
+.size-btn:hover,
+.size-btn:focus {
+  background: #a02c5a;
+  color: #fff;
+  border: 1px solid #a02c5a;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

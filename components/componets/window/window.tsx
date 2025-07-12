@@ -3,7 +3,7 @@ import { WindowProps } from '../../../interfaz/WindowProps';
 import Image from 'next/image';
 import styles from './window.module.css';
 
-const Window: React.FC<WindowProps> = ({ images, title, price }) => {
+const Window: React.FC<WindowProps> = ({ images, title, price, sizes }) => {
   const [index, setIndex] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalIndex, setModalIndex] = useState(0);
@@ -62,6 +62,20 @@ const Window: React.FC<WindowProps> = ({ images, title, price }) => {
         <div className={styles['window-price']}>
           {price} <span>COP</span>
         </div>
+        {sizes && sizes.length > 0 && (
+          <div className={styles['sizes-container']}>
+            {sizes.map((size) => (
+              <button
+                key={size}
+                className={styles['size-btn']}
+                type="button"
+                aria-label={`Seleccionar talla ${size}`}
+              >
+                {size}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       {modalOpen && (
@@ -73,7 +87,6 @@ const Window: React.FC<WindowProps> = ({ images, title, price }) => {
           <div className={styles['window-modal-content']} onClick={(e) => e.stopPropagation()}>
             {modalIndex > 0 && (
               <button className={`${styles.arrow} ${styles.left}`} onClick={modalPrev}>
-                
                 &#10094;
               </button>
             )}
@@ -82,7 +95,7 @@ const Window: React.FC<WindowProps> = ({ images, title, price }) => {
               alt={`${title} imagen grande ${modalIndex + 1}`}
               width={800}
               height={600}
-              className={styles['window-modal-img']}              
+              className={styles['window-modal-img']}
               style={{ objectFit: 'contain', borderRadius: 16, background: '#fff' }}
               priority
             />
@@ -92,7 +105,7 @@ const Window: React.FC<WindowProps> = ({ images, title, price }) => {
               </button>
             )}
             <button
-              className={styles['window-modal-close']}              
+              className={styles['window-modal-close']}
               onClick={() => setModalOpen(false)}
               aria-label="Cerrar imagen"
             >

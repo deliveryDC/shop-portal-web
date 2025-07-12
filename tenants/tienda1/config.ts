@@ -17,7 +17,7 @@ const config : Tenant = {
         ],
         title: 'Conjunto Estampado corazones',
         price: 42000,
-        sizes: ['S', 'M', 'L', 'XL']
+        sizes: ['M']
     },
     {
         images: [
@@ -27,7 +27,8 @@ const config : Tenant = {
             '/tienda1/pijama2.3.jpeg'
         ],
         title: 'Enterizo Estampado de lepardo',
-        price: 52000
+        price: 52000,
+        sizes: ['S','M','L','XL']
     },
     {
         images: [
@@ -37,7 +38,8 @@ const config : Tenant = {
             '/tienda1/pijama3.3.jpeg'
         ],
         title: 'Enterizo Estampado de lepardo',
-        price: 52000
+        price: 52000,
+        sizes: ['S','M','L','XL']
     },
     {
         images: [
@@ -47,7 +49,8 @@ const config : Tenant = {
             '/tienda1/pijama4.3.jpeg'
         ],
         title: 'Conjunto pijama satén',
-        price: 52000
+        price: 52000,
+        sizes: ['S','M','L']
     },
     {
         images: [
@@ -57,7 +60,8 @@ const config : Tenant = {
             '/tienda1/pijama5.3.jpeg'
         ],
         title: 'Conjunto pijama satén',
-        price: 52000
+        price: 52000,
+        sizes: ['S','M','L']
     },
     {
         images: [
@@ -67,7 +71,8 @@ const config : Tenant = {
             '/tienda1/pijama6.3.jpeg'
         ],
         title: 'Pijama 6',
-        price: 52000
+        price: 52000,
+        sizes: ['S','M','L']
     },
     {
         images: [
@@ -77,7 +82,8 @@ const config : Tenant = {
             '/tienda1/pijama7.3.jpeg'
         ],
         title: 'Pijama 7',
-        price: 52000
+        price: 52000,
+        sizes: ['S','M','L']
     },
     {
         images: [
@@ -88,7 +94,8 @@ const config : Tenant = {
             '/tienda1/pijama8.4.jpeg'
         ],
         title: 'Pijama 8',
-        price: 52000
+        price: 52000,
+        sizes: ['S','M','L']
     },
     {
         images: [
@@ -98,7 +105,8 @@ const config : Tenant = {
             '/tienda1/pijama9.3.jpeg'
         ],
         title: 'Pijama 9',
-        price: 52000
+        price: 52000,
+        sizes: ['XS','S','M','L','XL']
     },
     {
         images: [
@@ -108,7 +116,8 @@ const config : Tenant = {
             '/tienda1/pijama10.3.jpeg'
         ],
         title: 'Pijama 10',
-        price: 52000
+        price: 52000,
+        sizes: ['S','M','L','XL']
     },
     {
         images: [
@@ -119,7 +128,8 @@ const config : Tenant = {
             '/tienda1/pijama11.4.jpeg'
         ],
         title: 'Pijama 11',
-        price: 52000
+        price: 52000,
+        sizes: ['S','M','L','XL']
     },
     {
         images: [
@@ -130,7 +140,8 @@ const config : Tenant = {
             '/tienda1/pijama12.4.jpeg'
         ],
         title: 'Pijama 12',
-        price: 52000
+        price: 52000,
+        sizes: ['S','M','L','XL']
     },
     {
         images: [
@@ -140,7 +151,8 @@ const config : Tenant = {
             '/tienda1/pijama13.3.jpeg'
         ],
         title: 'Pijama 13',
-        price: 52000
+        price: 52000,
+        sizes: ['S']
     },
     {
         images: [
@@ -150,7 +162,8 @@ const config : Tenant = {
             '/tienda1/pijama14.3.jpeg'
         ],
         title: 'Pijama 14',
-        price: 52000
+        price: 52000,
+        sizes: ['S','M','L','XL']
     },
     {
         images: [
@@ -162,7 +175,8 @@ const config : Tenant = {
             '/tienda1/pijama15.5.jpeg'
         ],
         title: 'Pijama 15',
-        price: 52000
+        price: 52000,
+        sizes: ['S','M','L','XL']
     },
     {
         images: [
@@ -174,7 +188,8 @@ const config : Tenant = {
             '/tienda1/pijama16.5.jpeg'
         ],
         title: 'Pijama 16',
-        price: 52000
+        price: 52000,
+        sizes: ['S','L','XL']
     }
     ]
 };
